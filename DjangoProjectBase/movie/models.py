@@ -9,6 +9,7 @@ class Movie(models.Model):
 
     genre = models.CharField(max_length=100, blank=True)
     year = models.IntegerField(null=True, blank=True)
+    emb = models.BinaryField(null=True, blank=True)
 
     def __str__(self):
         return self.title
