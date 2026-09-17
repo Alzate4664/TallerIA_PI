@@ -5,3 +5,5 @@ openAI.env
 *.env
 __pycache__/
 *.py[cod]
+/images.zip
+/images_workshop3/
