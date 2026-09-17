@@ -1,20 +1,47 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
 {% block content %}
 
-<div class="container">
-    {% for news in newss %} 
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ news.headline }}</h5>
-                    <p class="card-text">{{ news.body }}</p>
-                    <p class="card-text"><small class="text-muted"> {{ news.date }} </small></p>
+<div class="container mt-4">
+
+    {% for news in newss %}
+
+        <div class="card mb-3">
+
+            <div class="row g-0">
+
+                <div class="col-md-8">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+                            {{ news.headline }}
+                        </h5>
+
+                        <p class="card-text">
+                            {{ news.body }}
+                        </p>
+
+                        <p class="card-text">
+                            <small class="text-muted">
+                                {{ news.date }}
+                            </small>
+                        </p>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
-    </div>
+
+    {% empty %}
+
+        <p>No news available.</p>
+
     {% endfor %}
+
 </div>
 
 {% endblock content %}
