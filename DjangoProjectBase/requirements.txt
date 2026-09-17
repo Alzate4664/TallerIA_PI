@@ -1,7 +1,8 @@
+Django
+Pillow
+pandas
+matplotlib
 openai
 python-dotenv
 numpy
 requests
-matplotlib
-django
-pillow

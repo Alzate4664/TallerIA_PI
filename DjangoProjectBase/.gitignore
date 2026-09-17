@@ -1,0 +1,9 @@
+*.pyc
+backup_workshop1/
+openAI.env
+.env
+*.env
+__pycache__/
+*.py[cod]
+/images.zip
+/images_workshop3/
