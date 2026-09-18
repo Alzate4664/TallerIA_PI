@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1>Movie Recommendations</h1>
+
+    <p class="text-muted">
+        Describe the kind of movie you would like to watch.
+    </p>
+
+    <form method="GET" class="mb-4">
+
+        <div class="mb-3">
+            <label for="prompt" class="form-label">
+                Recommendation prompt:
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="prompt"
+                name="prompt"
+                value="{{ prompt }}"
+                placeholder="Example: Movie about the Second World War"
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Recommend Movie
+        </button>
+
+    </form>
+
+    {% if error %}
+
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+
+    {% endif %}
+
+    {% if recommended_movie %}
+
+        <hr>
+
+        <h2 class="mb-3">
+            Recommended Movie
+        </h2>
+
+        <div class="card mb-4" style="max-width: 900px;">
+
+            <div class="row g-0">
+
+                <div class="col-md-4">
+
+                    {% if recommended_movie.image %}
+
+                        <img
+                            src="{{ recommended_movie.image.url }}"
+                            class="img-fluid rounded-start"
+                            alt="{{ recommended_movie.title }}"
+                        >
+
+                    {% endif %}
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="card-body">
+
+                        <h3 class="card-title">
+                            {{ recommended_movie.title }}
+                        </h3>
+
+                        <p class="card-text">
+                            {{ recommended_movie.description }}
+                        </p>
+
+                        <p class="card-text">
+                            <strong>Genre:</strong>
+                            {{ recommended_movie.genre|default:"Not available" }}
+                        </p>
+
+                        <p class="card-text">
+                            <strong>Year:</strong>
+                            {{ recommended_movie.year|default:"Not available" }}
+                        </p>
+
+                        {% if similarity %}
+
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Similarity:
+                                    {{ similarity|floatformat:4 }}
+                                </small>
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock content %}

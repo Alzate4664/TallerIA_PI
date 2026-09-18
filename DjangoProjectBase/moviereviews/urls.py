@@ -29,7 +29,8 @@ urlpatterns = [
     path(
     'statistics/genre/',
     movieviews.genre_statistics_view,
-    name='genre_statistics'
+    name='genre_statistics'),
+    path('recommendations/', include('recommendations.urls'),
     ),
 ]
 
